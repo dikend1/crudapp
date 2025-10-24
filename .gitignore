@@ -135,3 +135,25 @@ dmypy.json
 # OS
 .DS_Store
 Thumbs.db
+
+# FastAPI specific
+# Logs
+*.log
+
+# Database
+# If using SQLite, uncomment the next line
+# *.db
+# *.sqlite3
+
+# Alembic
+# Keep versions/ but ignore temp files
+alembic/versions/*.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Secrets
+secrets.json
+config.local.json
