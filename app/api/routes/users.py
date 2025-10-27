@@ -21,7 +21,7 @@ def get_users(db:Session = Depends(get_db)):
     return services.user_service.get_users(db)
 
 @router.put("/{user_id}",response_model=schemas.UserRead)
-def update_user(user_id:int,updates:schemas.UserCreate,db:Session = Depends(get_db)):
+def update_user(user_id:int,updates:schemas.UserUpdate,db:Session = Depends(get_db)):
     user = services.update_user(db,user_id,updates)
     if not user:
         raise HTTPException(status_code=404,detail="User not found")

@@ -17,11 +17,11 @@ def get_users(db:Session):
 def get_user(db: Session,user_id:int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
-def update_user(db:Session,user_id:int,updates:schemas.user.UserCreate):
+def update_user(db:Session,user_id:int,updates:schemas.UserUpdate):
     db_user = db.query(models.User).filter(models.User.id == user_id).first()
     if not db_user:
         return None
-    for key,value in updates.dict(exclude_unset=True).items():
+    for key,value in updates.model_dump(exclude_unset=True).items():
         setattr(db_user,key,value)
     db.commit()
     db.refresh(db_user)
