@@ -14,10 +14,8 @@ def get_tasks(db:Session):
 
 def update_task(db:Session,task_id:int,updates:schemas.TaskUpdate):
     db_task = db.query(models.Task).filter(models.Task.id == task_id).first()
-    
     if not db_task:
         return None
-
     for key,value in updates.dict(exclude_unset=True).items():
         setattr(db_task,key,value)
     db.commit()

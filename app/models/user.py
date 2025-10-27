@@ -11,4 +11,4 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String, nullable=False)
 
-    tasks = relationship("Task", back_populates="user")
+    tasks = relationship("Task", back_populates="user", cascade="all, delete-orphan")
